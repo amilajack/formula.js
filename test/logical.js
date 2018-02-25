@@ -1,73 +1,72 @@
-/* global suite, test */
+
 import error from '../lib/error';
 
 import logical from '../lib/logical';
-import should from 'should';
 
-suite('Logical', () => {
+describe('Logical', () => {
   test('AND', () => {
-    logical.AND(true, true).should.equal(true);
-    logical.AND(true, false).should.equal(false);
+    expect(logical.AND(true, true)).toBe(true);
+    expect(logical.AND(true, false)).toBe(false);
   });
 
   test('CHOOSE', () => {
-    logical.CHOOSE().should.equal(error.na);
-    logical.CHOOSE(1).should.equal(error.na);
-    logical.CHOOSE(1, 'jima').should.equal('jima');
-    logical.CHOOSE(3, 'jima', 'jimb', 'jimc').should.equal('jimc');
-    logical.CHOOSE(2, 'jima').should.equal(error.value);
-    logical.CHOOSE(255, 'jima').should.equal(error.value);
+    expect(logical.CHOOSE()).toBe(error.na);
+    expect(logical.CHOOSE(1)).toBe(error.na);
+    expect(logical.CHOOSE(1, 'jima')).toBe('jima');
+    expect(logical.CHOOSE(3, 'jima', 'jimb', 'jimc')).toBe('jimc');
+    expect(logical.CHOOSE(2, 'jima')).toBe(error.value);
+    expect(logical.CHOOSE(255, 'jima')).toBe(error.value);
   });
 
   test('FALSE', () => {
-    logical.FALSE().should.equal(false);
+    expect(logical.toBe(false)).toBe(false);
   });
 
   test('IF', () => {
-    logical.IF(true, 1, 2).should.equal(1);
-    logical.IF(false, 1, 2).should.equal(2);
+    expect(logical.IF(true, 1, 2)).toBe(1);
+    expect(logical.IF(false, 1, 2)).toBe(2);
   });
 
   test('IFERROR', () => {
-    logical.IFERROR(1, 2).should.equal(1);
-    logical.IFERROR(error.value, 2).should.equal(2);
+    expect(logical.IFERROR(1, 2)).toBe(1);
+    expect(logical.IFERROR(error.value, 2)).toBe(2);
   });
 
   test('IFNA', () => {
-    logical.IFNA(1, 2).should.equal(1);
-    logical.IFNA(error.na, 2).should.equal(2);
+    expect(logical.IFNA(1, 2)).toBe(1);
+    expect(logical.IFNA(error.na, 2)).toBe(2);
   });
 
   test('NOT', () => {
-    logical.NOT(true).should.equal(false);
-    logical.NOT(false).should.equal(true);
+    expect(logical.NOT(true)).toBe(false);
+    expect(logical.NOT(false)).toBe(true);
   });
 
   test('OR', () => {
-    logical.OR(true).should.equal(true);
-    logical.OR(false).should.equal(false);
-    logical.OR(true, false).should.equal(true);
+    expect(logical.OR(true)).toBe(true);
+    expect(logical.OR(false)).toBe(false);
+    expect(logical.OR(true, false)).toBe(true);
   });
 
   test('TRUE', () => {
-    logical.TRUE().should.equal(true);
+    expect(logical.toBe(true)).toBe(true);
   });
 
   test('XOR', () => {
-    logical.XOR(false, false).should.equal(false);
-    logical.XOR(false, true).should.equal(true);
-    logical.XOR(true, false).should.equal(true);
-    logical.XOR(true, true).should.equal(false);
+    expect(logical.XOR(false, false)).toBe(false);
+    expect(logical.XOR(false, true)).toBe(true);
+    expect(logical.XOR(true, false)).toBe(true);
+    expect(logical.XOR(true, true)).toBe(false);
   });
 
   test('SWITCH', () => {
-    should.not.exist(logical.SWITCH());
-    should.not.exist(logical.SWITCH(7));
-    logical.SWITCH(7, 'Default Expression').should.equal('Default Expression');
-    should.not.exist(logical.SWITCH(7, 9, 'Nine'));
-    logical.SWITCH(7, 9, 'Nine', 7, 'Seven').should.equal('Seven');
-    logical.SWITCH(7, 9, 'Nine', 7, 'Seven').should.equal('Seven');
-    logical.SWITCH(8, 9, 'Nine', 7, 'Seven', 'Eight').should.equal('Eight');
-    should.not.exist(logical.SWITCH(10, 9, 'Nine', 7, 'Seven', 8, 'Eight'));
+    expect(logical.SWITCH()).toBeFalsy();
+    expect(logical.SWITCH(7)).toBeFalsy();
+    expect(logical.SWITCH(7, 'Default Expression')).toBe('Default Expression');
+    expect(logical.SWITCH(7, 9, 'Nine')).toBeFalsy();
+    expect(logical.SWITCH(7, 9, 'Nine', 7, 'Seven')).toBe('Seven');
+    expect(logical.SWITCH(7, 9, 'Nine', 7, 'Seven')).toBe('Seven');
+    expect(logical.SWITCH(8, 9, 'Nine', 7, 'Seven', 'Eight')).toBe('Eight');
+    expect(logical.SWITCH(10, 9, 'Nine', 7, 'Seven', 8, 'Eight')).toBeFalsy();
   });
 });

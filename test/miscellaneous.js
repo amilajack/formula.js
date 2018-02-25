@@ -1,32 +1,30 @@
-/* global suite, test */
+
 import misc from '../lib/miscellaneous';
 
-import should from 'should';
-
-suite('Miscellaneous', () => {
+describe('Miscellaneous', () => {
   test('NUMERAL', () => {
-    misc.NUMERAL(10000, '0,0.0000').should.equal('10,000.0000');
-    misc.NUMERAL(10000.23, '0,0').should.equal('10,000');
-    misc.NUMERAL(1000.234, '$0,0.00').should.equal('$1,000.23');
-    misc.NUMERAL(100, '0b').should.equal('100B');
-    misc.NUMERAL(0.974878234, '0.000%').should.equal('97.488%');
+    expect(misc.NUMERAL(10000, '0,0.0000')).toBe('10,000.0000');
+    expect(misc.NUMERAL(10000.23, '0,0')).toBe('10,000');
+    expect(misc.NUMERAL(1000.234, '$0,0.00')).toBe('$1,000.23');
+    expect(misc.NUMERAL(100, '0b')).toBe('100B');
+    expect(misc.NUMERAL(0.974878234, '0.000%')).toBe('97.488%');
   });
 
   test('UNIQUE', () => {
-    misc.UNIQUE(1, 2, 3, 4, 5, 6, 6, 3).should.containDeep([1, 2, 3, 4, 5, 6]);
-    misc.UNIQUE('jima', 'jimb', 'jima', 'jimc').should.containDeep(['jima', 'jimb', 'jimc']);
-    misc.UNIQUE().should.eql([]);
-    misc.UNIQUE([]).should.eql([[]]);
+    expect(misc.UNIQUE(1, 2, 3, 4, 5, 6, 6, 3)).to.containDeep([1, 2, 3, 4, 5, 6]);
+    expect(misc.UNIQUE('jima', 'jimb', 'jima', 'jimc')).to.containDeep(['jima', 'jimb', 'jimc']);
+    expect(misc.UNIQUE()).toEqual([]);
+    expect(misc.UNIQUE([])).toEqual([[]]);
   });
 
   test('ARGS2ARRAY', () => {
-    misc.ARGS2ARRAY(1, 2, 3, 4).should.eql([1, 2, 3, 4]);
-    misc.ARGS2ARRAY('jim', 2, 3.14).should.eql(['jim', 2, 3.14]);
+    expect(misc.ARGS2ARRAY(1, 2, 3, 4)).toEqual([1, 2, 3, 4]);
+    expect(misc.ARGS2ARRAY('jim', 2, 3.14)).toEqual(['jim', 2, 3.14]);
   });
 
   test('FLATTEN', () => {
-    misc.FLATTEN([1, [2, 3, [4, 5]]]).should.eql([1, 2, 3, 4, 5]);
-    misc.FLATTEN([]).should.eql([]);
+    expect(misc.FLATTEN([1, [2, 3, [4, 5]]])).toEqual([1, 2, 3, 4, 5]);
+    expect(misc.FLATTEN([])).toEqual([]);
   });
 
   test('GETJSON', () => {
@@ -35,13 +33,13 @@ suite('Miscellaneous', () => {
   });
 
   test('JOIN', () => {
-    misc.JOIN([1, [2, 3, [4, 5]]]).should.eql('1,2,3,4,5');
-    misc.JOIN(['jim', 'alateras'], ' ').should.equal('jim alateras');
+    expect(misc.JOIN([1, [2, 3, [4, 5]]])).toEqual('1,2,3,4,5');
+    expect(misc.JOIN(['jim', 'alateras'], ' ')).toBe('jim alateras');
   });
 
   test('NUMBERS', () => {
-    misc.NUMBERS([1, [2, 3, [4, 5]]]).should.equal.true;
-    misc.NUMBERS(['jim', 'alateras'], ' ').should.equal.false;
+    expect(misc.NUMBERS([1, [2, 3, [4, 5]]])).toBe(true);
+    expect(misc.NUMBERS(['jim', 'alateras'], ' ')).toBe(false);
   });
 
   test('REFERENCE', () => {
@@ -63,10 +61,10 @@ suite('Miscellaneous', () => {
       }
     };
 
-    misc.REFERENCE(ctx, 'name.firstName').should.equal('Jim');
-    misc.REFERENCE(ctx, 'name.address').should.have.property('number', '5');
-    misc.REFERENCE(ctx, 'name.address.mobile').should.equal('0422344861');
-    misc.REFERENCE(ctx, 'name.nickNames[0]').should.equal('jforce');
-    should.not.exist(misc.REFERENCE(ctx, 'name.address2'));
+    expect(misc.REFERENCE(ctx, 'name.firstName')).toBe('Jim');
+    expect(misc.REFERENCE(ctx, 'name.address')).toHaveProperty('number', '5');
+    expect(misc.REFERENCE(ctx, 'name.address.mobile')).toBe('0422344861');
+    expect(misc.REFERENCE(ctx, 'name.nickNames[0]')).toBe('jforce');
+    expect(misc.REFERENCE(ctx, 'name.address2')).toBeFalsy();
   });
 });

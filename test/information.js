@@ -1,141 +1,141 @@
-/* global suite, test */
+
 import error from '../lib/error';
 
 import information from '../lib/information';
 
-suite('Information', () => {
+describe('Information', () => {
   // TODO
   test('CELL', () => {
-    information.CELL.should.throw('CELL is not implemented');
+    expect(information.CELL).toThrowError('CELL is not implemented');
   });
 
   test('ERROR.TYPE', () => {
-    information.ERROR.TYPE(error.nil).should.equal(1);
-    information.ERROR.TYPE(error.div0).should.equal(2);
-    information.ERROR.TYPE(error.value).should.equal(3);
-    information.ERROR.TYPE(error.ref).should.equal(4);
-    information.ERROR.TYPE(error.name).should.equal(5);
-    information.ERROR.TYPE(error.num).should.equal(6);
-    information.ERROR.TYPE(error.na).should.equal(7);
-    information.ERROR.TYPE(error.data).should.equal(8);
-    information.ERROR.TYPE(1).should.equal(error.na);
+    expect(information.ERROR.TYPE(error.nil)).toBe(1);
+    expect(information.ERROR.TYPE(error.div0)).toBe(2);
+    expect(information.ERROR.TYPE(error.value)).toBe(3);
+    expect(information.ERROR.TYPE(error.ref)).toBe(4);
+    expect(information.ERROR.TYPE(error.name)).toBe(5);
+    expect(information.ERROR.TYPE(error.num)).toBe(6);
+    expect(information.ERROR.TYPE(error.na)).toBe(7);
+    expect(information.ERROR.TYPE(error.data)).toBe(8);
+    expect(information.ERROR.TYPE(1)).toBe(error.na);
   });
 
   // TODO
   test('INFO', () => {
-    information.INFO.should.throw('INFO is not implemented');
+    expect(information.INFO).toThrowError('INFO is not implemented');
   });
 
   test('ISBINARY', () => {
-    information.ISBINARY(1).should.equal(true);
-    information.ISBINARY(0).should.equal(true);
-    information.ISBINARY(1000).should.equal(true);
-    information.ISBINARY('1').should.equal(true);
-    information.ISBINARY('0').should.equal(true);
-    information.ISBINARY('1000').should.equal(true);
-    information.ISBINARY('invalid').should.equal(false);
+    expect(information.ISBINARY(1)).toBe(true);
+    expect(information.ISBINARY(0)).toBe(true);
+    expect(information.ISBINARY(1000)).toBe(true);
+    expect(information.ISBINARY('1')).toBe(true);
+    expect(information.ISBINARY('0')).toBe(true);
+    expect(information.ISBINARY('1000')).toBe(true);
+    expect(information.ISBINARY('invalid')).toBe(false);
   });
 
   test('ISBLANK', () => {
-    information.ISBLANK(null).should.equal(true);
-    information.ISBLANK(1).should.equal(false);
+    expect(information.ISBLANK(null)).toBe(true);
+    expect(information.ISBLANK(1)).toBe(false);
   });
 
   test('ISERR', () => {
-    information.ISERR(1).should.equal(false);
-    information.ISERR(error.na).should.equal(false);
-    information.ISERR(error.value).should.equal(true);
-    information.ISERR(NaN).should.equal(true);
-    information.ISERR(1 / 0).should.equal(true);
+    expect(information.ISERR(1)).toBe(false);
+    expect(information.ISERR(error.na)).toBe(false);
+    expect(information.ISERR(error.value)).toBe(true);
+    expect(information.ISERR(NaN)).toBe(true);
+    expect(information.ISERR(1 / 0)).toBe(true);
   });
 
   test('ISERROR', () => {
-    information.ISERROR(1).should.equal(false);
-    information.ISERROR(error.na).should.equal(true);
-    information.ISERROR(error.value).should.equal(true);
+    expect(information.ISERROR(1)).toBe(false);
+    expect(information.ISERROR(error.na)).toBe(true);
+    expect(information.ISERROR(error.value)).toBe(true);
   });
 
   test('ISEVEN', () => {
-    information.ISEVEN(-1).should.equal(false);
-    information.ISEVEN(2.5).should.equal(true);
-    information.ISEVEN(5).should.equal(false);
-    information.ISEVEN(0).should.equal(true);
+    expect(information.ISEVEN(-1)).toBe(false);
+    expect(information.ISEVEN(2.5)).toBe(true);
+    expect(information.ISEVEN(5)).toBe(false);
+    expect(information.ISEVEN(0)).toBe(true);
   });
 
   // TODO
   test('ISFORMULA', () => {
-    information.ISFORMULA.should.throw('ISFORMULA is not implemented');
+    expect(information.ISFORMULA).toThrowError('ISFORMULA is not implemented');
   });
 
   test('ISLOGICAL', () => {
-    information.ISLOGICAL(true).should.equal(true);
-    information.ISLOGICAL(false).should.equal(true);
-    information.ISLOGICAL(1).should.equal(false);
-    information.ISLOGICAL('true').should.equal(false);
+    expect(information.ISLOGICAL(true)).toBe(true);
+    expect(information.ISLOGICAL(false)).toBe(true);
+    expect(information.ISLOGICAL(1)).toBe(false);
+    expect(information.ISLOGICAL('true')).toBe(false);
   });
 
   test('ISNA', () => {
-    information.ISNA(error.na).should.equal(true);
-    information.ISNA(1).should.equal(false);
+    expect(information.ISNA(error.na)).toBe(true);
+    expect(information.ISNA(1)).toBe(false);
   });
 
   test('ISNONTEXT', () => {
-    information.ISNONTEXT(1).should.equal(true);
-    information.ISNONTEXT(true).should.equal(true);
-    information.ISNONTEXT('a').should.equal(false);
+    expect(information.ISNONTEXT(1)).toBe(true);
+    expect(information.ISNONTEXT(true)).toBe(true);
+    expect(information.ISNONTEXT('a')).toBe(false);
   });
 
   test('ISNUMBER', () => {
-    information.ISNUMBER(1).should.equal(true);
-    information.ISNUMBER('1').should.equal(false);
-    information.ISNUMBER(1 / 0).should.equal(false);
+    expect(information.ISNUMBER(1)).toBe(true);
+    expect(information.ISNUMBER('1')).toBe(false);
+    expect(information.ISNUMBER(1 / 0)).toBe(false);
   });
 
   test('ISODD', () => {
-    information.ISODD(-1).should.equal(true);
-    information.ISODD(5).should.equal(true);
-    information.ISODD(2.5).should.equal(false);
+    expect(information.ISODD(-1)).toBe(true);
+    expect(information.ISODD(5)).toBe(true);
+    expect(information.ISODD(2.5)).toBe(false);
   });
 
   // TODO
   test('ISREF', () => {
-    information.ISREF.should.throw('ISREF is not implemented');
+    expect(information.ISREF).toThrowError('ISREF is not implemented');
   });
 
   test('ISTEXT', () => {
-    information.ISTEXT('a').should.equal(true);
-    information.ISTEXT(1).should.equal(false);
-    information.ISTEXT(true).should.equal(false);
+    expect(information.ISTEXT('a')).toBe(true);
+    expect(information.ISTEXT(1)).toBe(false);
+    expect(information.ISTEXT(true)).toBe(false);
   });
 
   test('N', () => {
-    information.N(1).should.equal(1);
-    information.N(new Date(0)).should.equal((new Date(0)).getTime());
-    information.N(true).should.equal(1);
-    information.N(false).should.equal(0);
-    information.N(error.na).should.equal(error.na);
-    information.N('a').should.equal(0);
+    expect(information.N(1)).toBe(1);
+    expect(information.N(new Date(0))).toBe((new Date(0)).getTime());
+    expect(information.N(true)).toBe(1);
+    expect(information.N(false)).toBe(0);
+    expect(information.N(error.na)).toBe(error.na);
+    expect(information.N('a')).toBe(0);
   });
 
   test('NA', () => {
-    information.NA().should.equal(error.na);
+    expect(information.NA()).toBe(error.na);
   });
 
   // TODO
   test('SHEET', () => {
-    information.SHEET.should.throw('SHEET is not implemented');
+    expect(information.SHEET).toThrowError('SHEET is not implemented');
   });
 
   // TODO
   test('SHEETS', () => {
-    information.SHEETS.should.throw('SHEETS is not implemented');
+    expect(information.SHEETS).toThrowError('SHEETS is not implemented');
   });
 
   test('TYPE', () => {
-    information.TYPE(1).should.equal(1);
-    information.TYPE('a').should.equal(2);
-    information.TYPE(true).should.equal(4);
-    information.TYPE(error.na).should.equal(16);
-    information.TYPE([1]).should.equal(64);
+    expect(information.TYPE(1)).toBe(1);
+    expect(information.TYPE('a')).toBe(2);
+    expect(information.TYPE(true)).toBe(4);
+    expect(information.TYPE(error.na)).toBe(16);
+    expect(information.TYPE([1])).toBe(64);
   });
 });
