@@ -1,4 +1,4 @@
-var categories = [
+const categories = [
   require('./lib/compatibility'),
   require('./lib/database'),
   require('./lib/engineering'),
@@ -13,9 +13,13 @@ var categories = [
   require('./lib/miscellaneous')
 ];
 
-for (var c in categories) {
-  var category = categories[c];
-  for (var f in category) {
-    export const f = exports[f] || category[f];
+const lib = {};
+
+for (const c in categories) {
+  const category = categories[c];
+  for (const f in category) {
+    lib[f] = exports[f] || category[f];
   }
 }
+
+export default lib;
