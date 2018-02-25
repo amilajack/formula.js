@@ -4,13 +4,13 @@ import error from '../lib/error';
 import logical from '../lib/logical';
 import should from 'should';
 
-suite('Logical', function() {
-  test('AND', function() {
+suite('Logical', () => {
+  test('AND', () => {
     logical.AND(true, true).should.equal(true);
     logical.AND(true, false).should.equal(false);
   });
 
-  test('CHOOSE', function() {
+  test('CHOOSE', () => {
     logical.CHOOSE().should.equal(error.na);
     logical.CHOOSE(1).should.equal(error.na);
     logical.CHOOSE(1, 'jima').should.equal('jima');
@@ -19,55 +19,55 @@ suite('Logical', function() {
     logical.CHOOSE(255, 'jima').should.equal(error.value);
   });
 
-  test('FALSE', function() {
+  test('FALSE', () => {
     logical.FALSE().should.equal(false);
   });
 
-  test('IF', function() {
+  test('IF', () => {
     logical.IF(true, 1, 2).should.equal(1);
     logical.IF(false, 1, 2).should.equal(2);
   });
 
-  test('IFERROR', function() {
+  test('IFERROR', () => {
     logical.IFERROR(1, 2).should.equal(1);
     logical.IFERROR(error.value, 2).should.equal(2);
   });
 
-  test('IFNA', function() {
+  test('IFNA', () => {
     logical.IFNA(1, 2).should.equal(1);
     logical.IFNA(error.na, 2).should.equal(2);
   });
 
-  test('NOT', function() {
+  test('NOT', () => {
     logical.NOT(true).should.equal(false);
     logical.NOT(false).should.equal(true);
   });
 
-  test('OR', function() {
+  test('OR', () => {
     logical.OR(true).should.equal(true);
     logical.OR(false).should.equal(false);
     logical.OR(true, false).should.equal(true);
   });
 
-  test('TRUE', function() {
+  test('TRUE', () => {
     logical.TRUE().should.equal(true);
   });
 
-  test('XOR', function() {
+  test('XOR', () => {
     logical.XOR(false, false).should.equal(false);
     logical.XOR(false, true).should.equal(true);
     logical.XOR(true, false).should.equal(true);
     logical.XOR(true, true).should.equal(false);
   });
-  
-  test('SWITCH', function() {
+
+  test('SWITCH', () => {
     should.not.exist(logical.SWITCH());
     should.not.exist(logical.SWITCH(7));
-    logical.SWITCH(7, "Default Expression").should.equal("Default Expression");
-    should.not.exist(logical.SWITCH(7, 9, "Nine"));
-    logical.SWITCH(7, 9, "Nine", 7, "Seven").should.equal("Seven");
-    logical.SWITCH(7, 9, "Nine", 7, "Seven").should.equal("Seven");
-    logical.SWITCH(8, 9, "Nine", 7, "Seven", "Eight").should.equal("Eight");
-    should.not.exist(logical.SWITCH(10, 9, "Nine", 7, "Seven", 8, "Eight"));
+    logical.SWITCH(7, 'Default Expression').should.equal('Default Expression');
+    should.not.exist(logical.SWITCH(7, 9, 'Nine'));
+    logical.SWITCH(7, 9, 'Nine', 7, 'Seven').should.equal('Seven');
+    logical.SWITCH(7, 9, 'Nine', 7, 'Seven').should.equal('Seven');
+    logical.SWITCH(8, 9, 'Nine', 7, 'Seven', 'Eight').should.equal('Eight');
+    should.not.exist(logical.SWITCH(10, 9, 'Nine', 7, 'Seven', 8, 'Eight'));
   });
 });

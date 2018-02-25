@@ -11,6 +11,9 @@
   "bin": {
     "implementation-stats": "./bin/implementation-stats"
   },
+  "scripts": {
+      "lint": "eslint ."
+  },
   "dependencies": {
     "bessel": "1.0.2",
     "jStat": "1.7.1",
@@ -18,15 +21,17 @@
     "numeric": "1.2.6"
   },
   "devDependencies": {
-    "istanbul": "*",
-    "mocha": "*",
-    "should": "*",
-    "coveralls": "^3.0.0",
-    "jshint": "^2.9.5",
-    "mocha-lcov-reporter": "1.3.0",
     "blanket": "^1.2.3",
     "cli-table": "^0.3.1",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.18.1",
+    "eslint-config-bliss": "^1.0.20",
+    "istanbul": "*",
+    "jshint": "^2.9.5",
+    "mocha": "*",
+    "mocha-lcov-reporter": "1.3.0",
     "mocha-spec-cov": "0.0.3",
+    "should": "*",
     "webpack": "^4.0.0"
   },
   "config": {
