@@ -1,6 +1,7 @@
 /* global suite, test */
-var error = require('../lib/error');
-var lookup = require('../lib/lookup-reference');
+import error from '../lib/error';
+
+import lookup from '../lib/lookup-reference';
 
 suite('Lookup Reference', function() {
   test('MATCH', function() {

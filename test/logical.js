@@ -1,7 +1,8 @@
 /* global suite, test */
-var error = require('../lib/error');
-var logical = require('../lib/logical');
-var should = require('should');
+import error from '../lib/error';
+
+import logical from '../lib/logical';
+import should from 'should';
 
 suite('Logical', function() {
   test('AND', function() {

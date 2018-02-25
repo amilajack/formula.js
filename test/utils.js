@@ -1,7 +1,8 @@
 /* global suite, test */
-var utils  = require('../lib/utils');
-var should = require('should');
-var error  = require('../lib/error');
+import utils from '../lib/utils';
+
+import should from 'should';
+import error from '../lib/error';
 
 suite('Utils', function() {
   test('flatten', function() {

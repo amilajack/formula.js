@@ -1,8 +1,9 @@
 /* global suite, test */
-var statistical = require('../lib/statistical');
-var mathTrig = require('../lib/math-trig');
-var error = require('../lib/error');
-var should = require('should');
+import statistical from '../lib/statistical';
+
+import mathTrig from '../lib/math-trig';
+import error from '../lib/error';
+import should from 'should';
 
 suite('Statistical', function() {
   test("AVEDEV", function() {

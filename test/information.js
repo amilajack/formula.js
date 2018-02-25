@@ -1,6 +1,7 @@
 /* global suite, test */
-var error = require('../lib/error');
-var information = require('../lib/information');
+import error from '../lib/error';
+
+import information from '../lib/information';
 
 suite('Information', function() {
   // TODO

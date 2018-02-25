@@ -1,6 +1,7 @@
 /* global suite, test */
-var misc = require('../lib/miscellaneous');
-var should = require('should');
+import misc from '../lib/miscellaneous';
+
+import should from 'should';
 
 suite('Miscellaneous', function() {
   test('NUMERAL', function() {

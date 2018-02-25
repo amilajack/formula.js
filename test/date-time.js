@@ -1,7 +1,8 @@
 /* global suite, test */
-var error = require('../lib/error');
-var dateTime = require('../lib/date-time');
-require('should');
+import error from '../lib/error';
+
+import dateTime from '../lib/date-time';
+import 'should';
 
 suite('Date & Time', function() {
   test('DATE', function() {

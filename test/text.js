@@ -1,7 +1,8 @@
 /* global suite, test */
-var error = require('../lib/error');
-var should = require('should');
-var text = require('../lib/text');
+import error from '../lib/error';
+
+import should from 'should';
+import text from '../lib/text';
 
 suite('Text', function() {
   test('ASC', function() {

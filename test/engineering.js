@@ -1,6 +1,7 @@
 /* global suite, test */
-var error = require('../lib/error');
-var engineering = require('../lib/engineering');
+import error from '../lib/error';
+
+import engineering from '../lib/engineering';
 
 suite('Engineering', function() {
   test('BESSELI', function() {

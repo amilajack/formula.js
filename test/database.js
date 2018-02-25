@@ -1,7 +1,8 @@
 /* global suite, test */
-var error    = require('../lib/error');
-var database = require('../lib/database');
-require('should');
+import error from '../lib/error';
+
+import database from '../lib/database';
+import 'should';
 
 suite('Database', function() {
   test('FINDFIELD', function() {

@@ -1,7 +1,8 @@
 /* global suite, test */
-var financial = require('../lib/financial');
-var error = require('../lib/error');
-require('should');
+import financial from '../lib/financial';
+
+import error from '../lib/error';
+import 'should';
 
 suite('Financial', function() {
   test("ACCRINT", function() {

@@ -1,7 +1,8 @@
 /* global suite, test */
-var mathTrig = require('../lib/math-trig');
-var error = require('../lib/error');
-var should = require('should');
+import mathTrig from '../lib/math-trig';
+
+import error from '../lib/error';
+import should from 'should';
 
 suite('Math & Trig', function() {
   test('ABS', function() {

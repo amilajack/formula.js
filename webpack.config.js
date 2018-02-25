@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+import webpack from 'webpack';
 
 var isProd = process.argv.indexOf('--prod') !== -1;
 var isStandalone = process.argv.indexOf('--standalone') !== -1;
@@ -22,13 +22,13 @@ if (isProd) {
   plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
-module.exports = {
+export default {
   entry: {
     'formula': './index'
   },
   output: {
     path: __dirname,
-    filename: filename,
+    filename,
     library: 'formulajs',
     libraryTarget: 'umd'
   },
@@ -37,5 +37,5 @@ module.exports = {
     'numeric': 'numeric',
     'jStat': 'jStat'
   },
-  plugins: plugins
+  plugins
 };
