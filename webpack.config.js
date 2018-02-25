@@ -1,9 +1,9 @@
-var webpack = require('webpack');
+import webpack from 'webpack';
 
-var isProd = process.argv.indexOf('--prod') !== -1;
-var isStandalone = process.argv.indexOf('--standalone') !== -1;
+const isProd = process.argv.indexOf('--prod') !== -1;
+const isStandalone = process.argv.indexOf('--standalone') !== -1;
 
-var filename = 'dist/[name]';
+let filename = 'dist/[name]';
 if (isStandalone) {
   filename += '.standalone';
 }
@@ -12,7 +12,7 @@ if (isProd) {
 }
 filename += '.js';
 
-var plugins = [
+const plugins = [
   new webpack.optimize.DedupePlugin(),
 
   // this is required to be consumed by require.js
@@ -22,20 +22,20 @@ if (isProd) {
   plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
-module.exports = {
+export default {
   entry: {
-    'formula': './index'
+    formula: './index'
   },
   output: {
     path: __dirname,
-    filename: filename,
+    filename,
     library: 'formulajs',
     libraryTarget: 'umd'
   },
   externals: {
-    'numeral': 'numeral',
-    'numeric': 'numeric',
-    'jStat': 'jStat'
+    numeral: 'numeral',
+    numeric: 'numeric',
+    jStat: 'jStat'
   },
-  plugins: plugins
+  plugins
 };
